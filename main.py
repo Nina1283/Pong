@@ -1,5 +1,6 @@
 from microbit import *
 
+
 paddle_x = 0
 paddle_y = 4
 paddle_length = 2
