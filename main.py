@@ -19,6 +19,7 @@ last_update = running_time()
 game_over = False
 
 score = 0
+update_interval = 400
 
 while not game_over:
     # Paddlesteuerungen
@@ -28,7 +29,7 @@ while not game_over:
         paddle_x = (paddle_x + 1)
 
     # Ballrichtungsveränderung
-    if running_time() - last_update > 400:
+    if running_time() - last_update > update_interval:
         last_update = running_time()
         
         if (ball_x == 0): # Wenn Ball am linken Rand ist, soll er sich nach rechts bewegen
@@ -48,17 +49,20 @@ while not game_over:
             if ball_x == paddle_x:
                 direction_y = -1
                 score = score + 1
+                update_interval = update_interval - 10
             # Ist Ball rechts?
             elif ball_x == paddle_x + 1:
                 direction_y = -1
                 score = score + 1
+                update_interval = update_interval - 10
             # Ist Ball an linker Ecke?
             elif ball_x == paddle_x - 1:
                 direction_y = -1
                 direction_x = -1
                 if (ball_x == 0): # Wenn Ball am linken Rand ist, soll er sich nach rechts bewegen
                     direction_x = 1
-                score = score + 1  
+                score = score + 1
+                update_interval = update_interval - 10
             # Ist Ball an rechter Ecke?
             elif ball_x == paddle_x + 2:
                 direction_y = -1
@@ -66,6 +70,7 @@ while not game_over:
                 if (ball_x == 4): # Wenn Ball am rechten Rand ist, soll er sich nach links bewegen
                     direction_x = -1
                 score = score + 1
+                update_interval = update_interval - 10
 
         ball_x = (ball_x + direction_x) # Ball bewegt sich einen Schritt weiter nach rechts oder links
         ball_y = (ball_y + direction_y) # Ball bewegt sich einen Schritt weiter nach oben oder unten
