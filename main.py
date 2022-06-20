@@ -37,6 +37,13 @@ while True:
         elif (ball_y == 4): # Wenn Ball unten am Rand ist, soll er sich nach oben bewegen
             direction_y = -1
     
+        # Kollisionserkennung - Ball direkt über Paddle
+        if ball_y == 3:
+            if ball_x == paddle_x:
+                direction_y = -1
+            elif ball_x == paddle_x + 1:
+                direction_y = -1
+
         ball_x = (ball_x + direction_x) # Ball bewegt sich einen Schritt weiter nach rechts oder links
         ball_y = (ball_y + direction_y) # Ball bewegt sich einen Schritt weiter nach oben oder unten
     
