@@ -52,10 +52,14 @@ while not game_over:
             elif ball_x == paddle_x - 1:
                 direction_y = -1
                 direction_x = -1
+                if (ball_x == 0): # Wenn Ball am linken Rand ist, soll er sich nach rechts bewegen
+                    direction_x = 1  
             # Ist Ball an rechter Ecke?
             elif ball_x == paddle_x + 2:
                 direction_y = -1
-                direction_x = +1
+                direction_x = 1
+                if (ball_x == 4): # Wenn Ball am rechten Rand ist, soll er sich nach links bewegen
+                    direction_x = -1
 
         ball_x = (ball_x + direction_x) # Ball bewegt sich einen Schritt weiter nach rechts oder links
         ball_y = (ball_y + direction_y) # Ball bewegt sich einen Schritt weiter nach oben oder unten
