@@ -1,14 +1,19 @@
 from microbit import *
+import random
 
 
+# Startposition und Länge des Paddles
 paddle_x = 0
 paddle_y = 4
 paddle_length = 2
 
+# Startposition und Richtung des Balls 
 ball_x = 2
-ball_y = 0
-direction_x = 1
-direction_y = 1
+ball_y = 1
+# Zufällige Startrichtung
+direction_x = random.choice([1, -1])
+direction_y = random.choice([1, -1])
+
 last_update = running_time()
 
 while True:
