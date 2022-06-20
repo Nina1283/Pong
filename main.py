@@ -18,6 +18,8 @@ last_update = running_time()
 
 game_over = False
 
+score = 0
+
 while not game_over:
     # Paddlesteuerungen
     if button_a.was_pressed() and paddle_x > 0:
@@ -45,21 +47,25 @@ while not game_over:
             # Ist Ball links?
             if ball_x == paddle_x:
                 direction_y = -1
+                score = score + 1
             # Ist Ball rechts?
             elif ball_x == paddle_x + 1:
                 direction_y = -1
+                score = score + 1
             # Ist Ball an linker Ecke?
             elif ball_x == paddle_x - 1:
                 direction_y = -1
                 direction_x = -1
                 if (ball_x == 0): # Wenn Ball am linken Rand ist, soll er sich nach rechts bewegen
-                    direction_x = 1  
+                    direction_x = 1
+                score = score + 1  
             # Ist Ball an rechter Ecke?
             elif ball_x == paddle_x + 2:
                 direction_y = -1
                 direction_x = 1
                 if (ball_x == 4): # Wenn Ball am rechten Rand ist, soll er sich nach links bewegen
                     direction_x = -1
+                score = score + 1
 
         ball_x = (ball_x + direction_x) # Ball bewegt sich einen Schritt weiter nach rechts oder links
         ball_y = (ball_y + direction_y) # Ball bewegt sich einen Schritt weiter nach oben oder unten
@@ -74,3 +80,5 @@ while not game_over:
     sleep(16) #400 Millisekunden Pause bis Ball sich bewegt
 
 display.show(Image.SKULL)
+sleep(5000)
+display.scroll(score)
