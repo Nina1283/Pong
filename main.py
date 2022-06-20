@@ -39,10 +39,20 @@ while True:
     
         # Kollisionserkennung - Ball direkt über Paddle
         if ball_y == 3:
+            # Ist Ball links?
             if ball_x == paddle_x:
                 direction_y = -1
+            # Ist Ball rechts?
             elif ball_x == paddle_x + 1:
                 direction_y = -1
+            # Ist Ball an linker Ecke?
+            elif ball_x == paddle_x - 1:
+                direction_y = -1
+                direction_x = -1
+            # Ist Ball an rechter Ecke?
+            elif ball_x == paddle_x + 2:
+                direction_y = -1
+                direction_x = +1
 
         ball_x = (ball_x + direction_x) # Ball bewegt sich einen Schritt weiter nach rechts oder links
         ball_y = (ball_y + direction_y) # Ball bewegt sich einen Schritt weiter nach oben oder unten
