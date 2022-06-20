@@ -16,7 +16,9 @@ direction_y = random.choice([1, -1])
 
 last_update = running_time()
 
-while True:
+game_over = False
+
+while not game_over:
     # Paddlesteuerungen
     if button_a.was_pressed() and paddle_x > 0:
         paddle_x = (paddle_x - 1)
@@ -34,8 +36,9 @@ while True:
 
         if (ball_y == 0): # Wenn Ball oben am Rand ist, soll er sich nach unten bewegen
             direction_y = 1
-        elif (ball_y == 4): # Wenn Ball unten am Rand ist, soll er sich nach oben bewegen
-            direction_y = -1
+        elif (ball_y == 4): # Wenn Ball unten am Rand ist, dann ist das Spiel vorbei
+            game_over = True
+            break
     
         # Kollisionserkennung - Ball direkt über Paddle
         if ball_y == 3:
@@ -65,3 +68,5 @@ while True:
 
     display.set_pixel(ball_x, ball_y, 9)
     sleep(16) #400 Millisekunden Pause bis Ball sich bewegt
+
+display.show(Image.SKULL)
