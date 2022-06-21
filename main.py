@@ -1,4 +1,5 @@
 from microbit import *
+import music
 import random
 
 
@@ -55,7 +56,7 @@ while not game_over:
                 direction_y = -1
                 score = score + 1
                 update_interval = update_interval - 10
-            # Ist Ball an linker Ecke?
+            # Ist Ball an linker Ecke?from microbit import *
             elif ball_x == paddle_x - 1:
                 direction_y = -1
                 direction_x = -1
@@ -85,5 +86,8 @@ while not game_over:
     sleep(16) #400 Millisekunden Pause bis Ball sich bewegt
 
 display.show(Image.SKULL)
-sleep(5000)
+set_volume(30)
+music.play(music.NYAN, wait=False)
+sleep(2000)
 display.scroll(score)
+speaker.off()
